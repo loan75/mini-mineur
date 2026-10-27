@@ -52,20 +52,11 @@ func _walk_animation() -> void:
 		%AnimatedSprite2D.play("default")
 
 func _mining_animation() -> void:
-	if _is_mining_pressed():
-		if Input.is_action_pressed("ui_right"):
-			%AnimatedSprite2D.flip_h = false
-			%AnimatedSprite2D.play("mine_right")
-			facing = Vector2i(1,0)
-		elif Input.is_action_pressed("ui_left"):
-			%AnimatedSprite2D.flip_h = true
-			%AnimatedSprite2D.play("mine_right")
-			facing = Vector2i(-1,0)
-		elif Input.is_action_pressed("ui_down"):
-			%AnimatedSprite2D.play("mine_down")
-			facing = Vector2i(0,1)
+	if facing.y == 1:
+		%AnimatedSprite2D.play("mine_down")
 	else:
-		%AnimatedSprite2D.play("default")
+		%AnimatedSprite2D.flip_h = facing.x < 0
+		%AnimatedSprite2D.play("mine_right")
 
 func _update_facing() -> void:
 	if Input.is_action_pressed("ui_down"):
@@ -103,15 +94,14 @@ func _dig(target: Vector2i, delta: float) -> void:
 		dig_progress = 0.0
 	dig_progress += delta
 	if dig_progress >= dig_time:
-		var ore_target = %Ore.local_to_map(%Ore.to_local(global_position)) + facing
-		if %Ore.get_cell_atlas_coords(ore_target) == gold:
+		if %Ore.get_cell_atlas_coords(target) == gold:
 			score += 1
 			new_score.emit(score)
 			_spawn_dig_particles(target)
 		energy -= energy_cost
 		energy_changed.emit(energy)
 		%Mine.set_cells_terrain_connect([target], 0, -1)   # remove the block
-		%Ore.erase_cell(ore_target)
+		%Ore.erase_cell(target)
 		_reset_dig()
 
 func _reset_dig() -> void:

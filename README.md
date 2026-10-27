@@ -58,7 +58,3 @@ Scenes/
 - Character and tile sprites: TODO, add the asset pack name, author and licence
 - Music and sound effects: TODO, add the sources and licences
 - Made with the [Godot Engine](https://godotengine.org)
-
-## Licence
-
-TODO: choose a licence for the code (for example MIT). Assets keep their own licences, listed in the credits.

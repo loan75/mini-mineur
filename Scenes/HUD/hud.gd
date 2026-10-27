@@ -27,9 +27,8 @@ func game_over() -> void:
 	%FinalScore.text = %ScoreValue.text
 	%GameOver.visible = true
 	%GameOverSound.play()
-	await get_tree().create_timer(1).timeout
 
 func _unhandled_input(event: InputEvent) -> void:
-	if get_tree().paused and (event.is_action_pressed("ui_accept") or event is InputEventScreenTouch):
+	if get_tree().paused and (event is InputEventScreenTouch and event.pressed):
 		get_tree().paused = false
 		get_tree().reload_current_scene()
