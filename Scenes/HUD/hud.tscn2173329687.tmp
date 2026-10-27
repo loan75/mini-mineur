@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bpw0ow67spa17"]
+
+[ext_resource type="Script" uid="uid://b6buyfofowtd4" path="res://Scenes/HUD/hud.gd" id="1_33i1w"]
+
+[node name="HUD" type="Control" unique_id=1104966456]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_33i1w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1000253987]
+layout_mode = 0
+offset_right = 151.0
+offset_bottom = 77.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=847741197]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Energy" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=581478219]
+layout_mode = 2
+text = "Energy:"
+
+[node name="EnergyBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer" unique_id=5078976]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+step = 1.0
+value = 50.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=813226635]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Score" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1537131471]
+layout_mode = 2
+text = "Score:"
+
+[node name="ScoreValue" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1788575679]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=654751281]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Timer" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=1567154969]
+layout_mode = 2
+text = "Timer:"
+
+[node name="TimerValue" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=7087012]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
