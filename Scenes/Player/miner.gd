@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 100.0
 const JUMP_VELOCITY = -200.0
 var mining_action: bool = false
-var dig_time: float = 2.0
+var dig_time: float = 1.0
 var dig_progress: float = 0.0
 var dig_target: Vector2i = Vector2i(-1, -1)
 var facing: Vector2i = Vector2i(-1, -1)
@@ -14,7 +14,7 @@ var score: int = 0
 @export var energy: int
 
 signal new_score(score: int)
-signal energy_reduce(energy_cost: int)
+signal energy_changed(energy: int)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -52,7 +52,7 @@ func _walk_animation() -> void:
 			%AnimatedSprite2D.play("default")
 
 func _mining_animation() -> void:
-	if mining_action and Input.is_action_pressed("mining"):
+	if mining_action and _is_mining_pressed():
 		if Input.is_action_pressed("ui_right"):
 			%AnimatedSprite2D.flip_h = false
 			%AnimatedSprite2D.play("mine_right")
@@ -76,17 +76,20 @@ func _pikeaxe_interaction() -> void:
 		$PickaxeHitbox.position = Vector2(+4,0)
 
 func _mining_action(delta) -> void:
-	if not Input.is_action_pressed("mining"):
+	if not _is_mining_pressed():
 		_mining_animation()
 		_reset_dig()
 		return
 	if not %PickaxeEffect.playing:
 		%PickaxeEffect.play()
 	_mining_animation()
-	dig_progress += delta
 	
 	var target = %Mine.local_to_map(%Mine.to_local(global_position)) + facing
 	var ore_target = %Ore.local_to_map(%Ore.to_local(global_position)) + facing
+
+	if %Mine.get_cell_source_id(target) == -1:
+		_reset_dig()
+		return
 
 	# Changed target while holding: start again
 	if target != dig_target:
@@ -102,7 +105,7 @@ func _mining_action(delta) -> void:
 			new_score.emit(score)
 			%CPUParticles2D.emitting = true
 		energy -= energy_cost
-		energy_reduce.emit(energy)
+		energy_changed.emit(energy)
 		%Mine.set_cells_terrain_connect([target], 0, -1)   # remove the block
 		%Ore.erase_cell(ore_target)
 		_reset_dig()
@@ -112,6 +115,11 @@ func _reset_dig() -> void:
 	dig_target = Vector2i(-1,-1)
 	%PickaxeEffect.stop()
 	
+
+func _is_mining_pressed() -> bool:
+	return Input.is_action_pressed("ui_left") \
+		or Input.is_action_pressed("ui_right") \
+		or Input.is_action_pressed("ui_down")
 
 func _on_pickaxe_hitbox_body_entered(body: Node2D) -> void:
 	mining_action = true

@@ -1,13 +1,16 @@
-extends Control
+extends CanvasLayer
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	%Miner.new_score.connect(_update_score)
-	%Miner.energy_reduce.connect(_update_energy)
+	%Miner.energy_changed.connect(_update_energy)
 	%EnergyBar.value = 100
 	%GameOver.visible = false
-
+	if DisplayServer.is_touchscreen_available():
+		$Touchscreen.visible = true
+	else:
+		$Touchscreen.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -24,6 +27,7 @@ func game_over() -> void:
 	%PlayerInfo.visible = false
 	%FinalScore.text = %ScoreValue.text
 	%GameOver.visible = true
+	%GameOverSound.play()
 
 func _retry() -> void:
 	if get_tree().paused and (Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("mining")):

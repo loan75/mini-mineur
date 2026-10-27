@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://dexbjcl27ayqo"]
+
+[ext_resource type="Script" uid="uid://c4te3ppbm1ev" path="res://Scenes/MainMenu/main_menu.gd" id="1_0qgbs"]
+[ext_resource type="Texture2D" uid="uid://bjk1hj4lvr8qv" path="res://Assets/Game Art/background.jpg" id="1_qgdf6"]
+[ext_resource type="Texture2D" uid="uid://dsm4wnxkgeddn" path="res://Assets/Game Art/key.png" id="2_0qgbs"]
+[ext_resource type="Texture2D" uid="uid://bgqa226sxocmo" path="res://Assets/Game Art/space.png" id="3_adu2g"]
+[ext_resource type="Texture2D" uid="uid://gjfjhs7mctjk" path="res://Assets/Game Art/up.png" id="5_omq0y"]
+[ext_resource type="Texture2D" uid="uid://b0eax20muj655" path="res://Assets/Game Art/down.png" id="6_agesy"]
+[ext_resource type="Texture2D" uid="uid://0e5hdoj2u213" path="res://Assets/Game Art/leftpng.png" id="7_mdp32"]
+[ext_resource type="Texture2D" uid="uid://vc64jihq5hxs" path="res://Assets/Game Art/right.png" id="8_rlg4b"]
+[ext_resource type="Texture2D" uid="uid://dvdfqoe4t7hds" path="res://Assets/Game Art/jump.png" id="9_w5buf"]
+
+[node name="MainMenu" type="CanvasLayer" unique_id=609820265]
+script = ExtResource("1_0qgbs")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1026738141]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qgdf6")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=1222735683]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -65.0
+offset_top = 16.0
+offset_right = 65.0
+offset_bottom = 39.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.93435836, 0.93435824, 7.70092e-07, 1)
+text = "Welcome Miner !
+Let's get some GOLD !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PC" type="Control" parent="." unique_id=1999140625]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="PC" unique_id=3800471]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PC" unique_id=1547005287]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -91.0
+offset_right = 235.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PC/HBoxContainer" unique_id=1239646483]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="MoveLabel" type="Label" parent="PC/HBoxContainer/VBoxContainer" unique_id=237257455]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.93435836, 0.93435824, 7.70092e-07, 1)
+text = "MOVE / MINE"
+
+[node name="Move" type="TextureRect" parent="PC/HBoxContainer/VBoxContainer" unique_id=2079190034]
+custom_minimum_size = Vector2(200, 50)
+custom_maximum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+texture = ExtResource("2_0qgbs")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PC/HBoxContainer" unique_id=670655794]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="JumpLabel" type="Label" parent="PC/HBoxContainer/VBoxContainer2" unique_id=1443368043]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.93435836, 0.93435824, 7.70092e-07, 1)
+text = "JUMP"
+
+[node name="Jump" type="TextureRect" parent="PC/HBoxContainer/VBoxContainer2" unique_id=205788160]
+custom_minimum_size = Vector2(200, 50)
+custom_maximum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+offset_transform_visual_only = false
+texture = ExtResource("3_adu2g")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="PC" unique_id=1630216076]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -91.0
+offset_top = 96.0
+offset_right = 91.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.93435836, 0.93435824, 7.70092e-07, 1)
+text = "Press space bar to start"
+
+[node name="Touchscreen" type="Control" parent="." unique_id=773682528]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="up" type="TouchScreenButton" parent="Touchscreen" unique_id=408280780]
+position = Vector2(-174, -112.99997)
+scale = Vector2(0.39999986, 0.39999986)
+texture_normal = ExtResource("5_omq0y")
+action = "ui_up"
+
+[node name="down" type="TouchScreenButton" parent="Touchscreen" unique_id=1022377712]
+position = Vector2(-173, -64.999954)
+scale = Vector2(0.39999986, 0.39999986)
+texture_normal = ExtResource("6_agesy")
+passby_press = true
+action = "ui_down"
+
+[node name="left" type="TouchScreenButton" parent="Touchscreen" unique_id=992396580]
+position = Vector2(-218, -87.999954)
+scale = Vector2(0.39999986, 0.39999986)
+texture_normal = ExtResource("7_mdp32")
+action = "ui_left"
+
+[node name="right" type="TouchScreenButton" parent="Touchscreen" unique_id=1471570089]
+position = Vector2(-128, -88.999954)
+scale = Vector2(0.39999986, 0.39999986)
+texture_normal = ExtResource("8_rlg4b")
+action = "ui_right"
+
+[node name="jump" type="TouchScreenButton" parent="Touchscreen" unique_id=202798918]
+position = Vector2(133.00005, -66.99997)
+scale = Vector2(0.7092942, 0.3333334)
+texture_normal = ExtResource("9_w5buf")
+action = "ui_accept"
+
+[node name="Label2" type="Label" parent="Touchscreen" unique_id=1028770723]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -91.0
+offset_top = -39.0
+offset_right = 91.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.93435836, 0.93435824, 7.70092e-07, 1)
+text = "Touch the screen to start"
