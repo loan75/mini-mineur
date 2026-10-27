@@ -7,13 +7,13 @@ func _ready() -> void:
 	$TimeLimit.wait_time = timer
 	$TimeLimit.start()
 	$TimeLimit.timeout.connect(_end)
-	%Miner.energy_changed.connect(is_energy_empty)
+	%Miner.energy_changed.connect(_on_miner_energy_changed)
 
 func _end() -> void:
 	get_tree().paused = true
 	$Miner.dead()
 	%HUD.game_over()
 
-func is_energy_empty(energy: int) -> void:
+func _on_miner_energy_changed(energy: int) -> void:
 	if energy <= 0:
 		_end()

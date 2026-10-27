@@ -137,26 +137,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="down" type="TouchScreenButton" parent="Touchscreen" unique_id=581933008]
+[node name="Down" type="TouchScreenButton" parent="Touchscreen" unique_id=581933008]
 position = Vector2(-173, -58)
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("6_agesy")
 passby_press = true
 action = "ui_down"
 
-[node name="left" type="TouchScreenButton" parent="Touchscreen" unique_id=1931617663]
+[node name="Left" type="TouchScreenButton" parent="Touchscreen" unique_id=1931617663]
 position = Vector2(-229, -92)
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("7_mdp32")
 action = "ui_left"
 
-[node name="right" type="TouchScreenButton" parent="Touchscreen" unique_id=737551217]
+[node name="Tight" type="TouchScreenButton" parent="Touchscreen" unique_id=737551217]
 position = Vector2(-116, -90)
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("8_rlg4b")
 action = "ui_right"
 
-[node name="jump" type="TouchScreenButton" parent="Touchscreen" unique_id=1421594728]
+[node name="Jump" type="TouchScreenButton" parent="Touchscreen" unique_id=1421594728]
 position = Vector2(137.99998, -85)
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("9_w5buf")

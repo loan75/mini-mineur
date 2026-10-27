@@ -4,11 +4,11 @@ const PROBE := 2.0   # pixels au-delà du bord du corps
 const DIG_PARTICLES := preload("uid://dqcdtnt3m2aaa")
 const SPEED = 100.0
 const JUMP_VELOCITY = -200.0
+const gold: Vector2i = Vector2i(3, 0)
 var dig_time: float = 1.0
 var dig_progress: float = 0.0
 var dig_target: Vector2i = Vector2i(-1, -1)
 var facing: Vector2i = Vector2i(1, 0)
-var gold: Vector2i = Vector2i(3, 0)
 var score: int = 0
 @export var energy_cost: int = 5
 @export var energy: int
