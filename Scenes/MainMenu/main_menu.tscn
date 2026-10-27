@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bjk1hj4lvr8qv" path="res://Assets/Game Art/background.jpg" id="1_qgdf6"]
 [ext_resource type="Texture2D" uid="uid://dsm4wnxkgeddn" path="res://Assets/Game Art/key.png" id="2_0qgbs"]
 [ext_resource type="Texture2D" uid="uid://bgqa226sxocmo" path="res://Assets/Game Art/space.png" id="3_adu2g"]
-[ext_resource type="Texture2D" uid="uid://gjfjhs7mctjk" path="res://Assets/Game Art/up.png" id="5_omq0y"]
 [ext_resource type="Texture2D" uid="uid://b0eax20muj655" path="res://Assets/Game Art/down.png" id="6_agesy"]
 [ext_resource type="Texture2D" uid="uid://0e5hdoj2u213" path="res://Assets/Game Art/leftpng.png" id="7_mdp32"]
 [ext_resource type="Texture2D" uid="uid://vc64jihq5hxs" path="res://Assets/Game Art/right.png" id="8_rlg4b"]
@@ -128,7 +127,7 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0.93435836, 0.93435824, 7.70092e-07, 1)
 text = "Press space bar to start"
 
-[node name="Touchscreen" type="Control" parent="." unique_id=773682528]
+[node name="Touchscreen" type="Control" parent="." unique_id=2002936244]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -138,34 +137,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="up" type="TouchScreenButton" parent="Touchscreen" unique_id=408280780]
-position = Vector2(-174, -112.99997)
-scale = Vector2(0.39999986, 0.39999986)
-texture_normal = ExtResource("5_omq0y")
-action = "ui_up"
-
-[node name="down" type="TouchScreenButton" parent="Touchscreen" unique_id=1022377712]
-position = Vector2(-173, -64.999954)
-scale = Vector2(0.39999986, 0.39999986)
+[node name="down" type="TouchScreenButton" parent="Touchscreen" unique_id=581933008]
+position = Vector2(-173, -58)
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("6_agesy")
 passby_press = true
 action = "ui_down"
 
-[node name="left" type="TouchScreenButton" parent="Touchscreen" unique_id=992396580]
-position = Vector2(-218, -87.999954)
-scale = Vector2(0.39999986, 0.39999986)
+[node name="left" type="TouchScreenButton" parent="Touchscreen" unique_id=1931617663]
+position = Vector2(-229, -92)
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("7_mdp32")
 action = "ui_left"
 
-[node name="right" type="TouchScreenButton" parent="Touchscreen" unique_id=1471570089]
-position = Vector2(-128, -88.999954)
-scale = Vector2(0.39999986, 0.39999986)
+[node name="right" type="TouchScreenButton" parent="Touchscreen" unique_id=737551217]
+position = Vector2(-116, -90)
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("8_rlg4b")
 action = "ui_right"
 
-[node name="jump" type="TouchScreenButton" parent="Touchscreen" unique_id=202798918]
-position = Vector2(133.00005, -66.99997)
-scale = Vector2(0.7092942, 0.3333334)
+[node name="jump" type="TouchScreenButton" parent="Touchscreen" unique_id=1421594728]
+position = Vector2(137.99998, -85)
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("9_w5buf")
 action = "ui_accept"
 
@@ -176,9 +169,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -91.0
+offset_left = -97.0
 offset_top = -39.0
-offset_right = 91.0
+offset_right = 97.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0

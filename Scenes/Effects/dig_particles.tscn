@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dqcdtnt3m2aaa"]
+
+[ext_resource type="Script" uid="uid://dw1r4t3vdk06t" path="res://Scenes/Effects/dig_particles.gd" id="1_mii16"]
+
+[sub_resource type="Curve" id="Curve_ydhuo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_l3qk4"]
+colors = PackedColorArray(0.9138083, 0.793785, 0.36981064, 1, 0, 0, 0, 1)
+
+[node name="dig_particles" type="CPUParticles2D" unique_id=254394055]
+unique_name_in_owner = true
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 0.66
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 40.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_ydhuo")
+color_ramp = SubResource("Gradient_l3qk4")
+script = ExtResource("1_mii16")

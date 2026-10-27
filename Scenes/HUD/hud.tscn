@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b6buyfofowtd4" path="res://Scenes/HUD/hud.gd" id="1_33i1w"]
 [ext_resource type="AudioStream" uid="uid://bro1g0m7ofn5i" path="res://Assets/Sound Effect/gameover.mp3" id="2_5aai8"]
-[ext_resource type="Texture2D" uid="uid://gjfjhs7mctjk" path="res://Assets/Game Art/up.png" id="3_1owdh"]
 [ext_resource type="Texture2D" uid="uid://b0eax20muj655" path="res://Assets/Game Art/down.png" id="4_ewgg5"]
 [ext_resource type="Texture2D" uid="uid://0e5hdoj2u213" path="res://Assets/Game Art/leftpng.png" id="5_isc6x"]
 [ext_resource type="Texture2D" uid="uid://vc64jihq5hxs" path="res://Assets/Game Art/right.png" id="6_7hg1w"]
@@ -130,33 +129,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="up" type="TouchScreenButton" parent="Touchscreen" unique_id=1206040332]
-position = Vector2(-174, -112.99997)
-scale = Vector2(0.39999986, 0.39999986)
-texture_normal = ExtResource("3_1owdh")
-action = "ui_up"
-
 [node name="down" type="TouchScreenButton" parent="Touchscreen" unique_id=1463903027]
-position = Vector2(-173, -64.999954)
-scale = Vector2(0.39999986, 0.39999986)
+position = Vector2(-173, -58)
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("4_ewgg5")
 passby_press = true
 action = "ui_down"
 
 [node name="left" type="TouchScreenButton" parent="Touchscreen" unique_id=1861810473]
-position = Vector2(-218, -87.999954)
-scale = Vector2(0.39999986, 0.39999986)
+position = Vector2(-229, -92)
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("5_isc6x")
 action = "ui_left"
 
 [node name="right" type="TouchScreenButton" parent="Touchscreen" unique_id=1350685699]
-position = Vector2(-128, -88.999954)
-scale = Vector2(0.39999986, 0.39999986)
+position = Vector2(-116, -90)
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("6_7hg1w")
 action = "ui_right"
 
 [node name="jump" type="TouchScreenButton" parent="Touchscreen" unique_id=1078112273]
-position = Vector2(133.00005, -66.99997)
-scale = Vector2(0.7092942, 0.3333334)
+position = Vector2(137.99998, -85)
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("7_f3qeh")
 action = "ui_accept"

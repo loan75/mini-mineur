@@ -5,7 +5,7 @@ extends CanvasLayer
 func _ready() -> void:
 	%Miner.new_score.connect(_update_score)
 	%Miner.energy_changed.connect(_update_energy)
-	%EnergyBar.value = 100
+	%EnergyBar.value = %Miner.energy
 	%GameOver.visible = false
 	if DisplayServer.is_touchscreen_available():
 		$Touchscreen.visible = true
@@ -15,7 +15,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	%TimerValue.text = str(int(%TimeLimit.time_left))
-	_retry()
 
 func _update_score(score: int) -> void:
 	%ScoreValue.text = str(score)
@@ -28,8 +27,9 @@ func game_over() -> void:
 	%FinalScore.text = %ScoreValue.text
 	%GameOver.visible = true
 	%GameOverSound.play()
+	await get_tree().create_timer(1).timeout
 
-func _retry() -> void:
-	if get_tree().paused and (Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("mining")):
+func _unhandled_input(event: InputEvent) -> void:
+	if get_tree().paused and (event.is_action_pressed("ui_accept") or event is InputEventScreenTouch):
 		get_tree().paused = false
 		get_tree().reload_current_scene()
