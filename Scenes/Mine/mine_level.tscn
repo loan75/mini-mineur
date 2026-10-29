@@ -64,13 +64,6 @@ sources/0 = SubResource("TileSetAtlasSource_rb12w")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ots4m"]
 texture = ExtResource("2_6v4oj")
-0:0/0 = 0
-0:0/0/terrain_set = 0
-0:0/0/terrain = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, 0, 0, 0, 8, -8, 8)
-0:0/0/terrains_peering_bit/right_side = 0
-0:0/0/terrains_peering_bit/bottom_side = 0
-0:0/0/custom_data_0 = ExtResource("3_4va7c")
 1:0/0 = 0
 1:0/0/terrain_set = 0
 1:0/0/terrain = 0
@@ -96,6 +89,7 @@ texture = ExtResource("2_6v4oj")
 4:0/0/terrains_peering_bit/bottom_side = 0
 4:0/0/custom_data_0 = ExtResource("3_4va7c")
 7:0/0 = 0
+7:0/0/custom_data_0 = ExtResource("3_4va7c")
 0:1/0 = 0
 0:1/0/terrain_set = 0
 0:1/0/terrain = 0
@@ -130,6 +124,7 @@ texture = ExtResource("2_6v4oj")
 4:1/0/terrains_peering_bit/top_side = 0
 4:1/0/custom_data_0 = ExtResource("3_4va7c")
 7:1/0 = 0
+7:1/0/custom_data_0 = ExtResource("3_4va7c")
 0:2/0 = 0
 0:2/0/terrain_set = 0
 0:2/0/terrain = 0
@@ -175,7 +170,9 @@ texture = ExtResource("2_6v4oj")
 6:2/0/terrain = 0
 6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:2/0/terrains_peering_bit/left_side = 0
+6:2/0/custom_data_0 = ExtResource("3_4va7c")
 7:2/0 = 0
+7:2/0/custom_data_0 = ExtResource("3_4va7c")
 0:3/0 = 0
 0:3/0/terrain_set = 0
 0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 0, 0, 0, 0, 8, 8, 8)
@@ -233,6 +230,7 @@ texture = ExtResource("2_6v4oj")
 5:5/0/terrain_set = 0
 5:5/0/custom_data_0 = ExtResource("3_4va7c")
 7:5/0 = 0
+7:5/0/custom_data_0 = ExtResource("3_4va7c")
 0:6/0 = 0
 0:6/0/terrain_set = 0
 0:6/0/custom_data_0 = ExtResource("3_4va7c")
@@ -246,7 +244,9 @@ texture = ExtResource("2_6v4oj")
 5:6/0/terrain_set = 0
 5:6/0/custom_data_0 = ExtResource("3_4va7c")
 6:6/0 = 0
+6:6/0/custom_data_0 = ExtResource("3_4va7c")
 7:6/0 = 0
+7:6/0/custom_data_0 = ExtResource("3_4va7c")
 3:7/0 = 0
 3:7/0/terrain_set = 0
 3:7/0/custom_data_0 = ExtResource("3_4va7c")
@@ -254,7 +254,24 @@ texture = ExtResource("2_6v4oj")
 5:7/0/terrain_set = 0
 5:7/0/custom_data_0 = ExtResource("3_4va7c")
 6:7/0 = 0
+6:7/0/custom_data_0 = ExtResource("3_4va7c")
 7:7/0 = 0
+7:7/0/custom_data_0 = ExtResource("3_4va7c")
+4:4/0 = 0
+4:4/0/custom_data_0 = ExtResource("3_4va7c")
+6:5/0 = 0
+6:5/0/custom_data_0 = ExtResource("3_4va7c")
+7:4/0 = 0
+7:4/0/custom_data_0 = ExtResource("3_4va7c")
+7:3/0 = 0
+7:3/0/custom_data_0 = ExtResource("3_4va7c")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, 0, 0, 0, 8, -8, 8)
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/custom_data_0 = ExtResource("3_4va7c")
 
 [sub_resource type="TileSet" id="TileSet_agi52"]
 physics_layer_0/collision_layer = 2
@@ -304,7 +321,7 @@ tile_set = SubResource("TileSet_agi52")
 
 [node name="Ore" type="TileMapLayer" parent="." unique_id=1721511307]
 unique_name_in_owner = true
-tile_map_data = PackedByteArray("AAADAAkAAAADAAAAAAAIAA4AAAADAAAAAAALAAsAAAADAAAAAAAUAAoAAAADAAAAAAAZAAkAAAADAAAAAAAaAA0AAAADAAAAAAATAA0AAAADAAAAAAAOAAsAAAADAAAAAAAMAAgAAAADAAAAAAAGAAgAAAADAAAAAAACAA8AAAADAAAAAAAPAA8AAAADAAAAAAAEAAwAAAADAAAAAAARAAgAAAADAAAAAAAXAA0AAAADAAAAAAAYAA8AAAADAAAAAAACAAcAAAADAAAAAAAWAAgAAAADAAAAAAAIAAcAAAADAAAAAAAIAAkAAAADAAAAAAAUAAcAAAADAAAAAAAaAAcAAAADAAAAAAAXAAsAAAADAAAAAAAUAA8AAAADAAAAAAANAA0AAAADAAAAAAAHAAwAAAADAAAAAAALAAkAAAADAAAAAAAOAAYAAAADAAAAAAAEAAYAAAADAAAAAAAEABAAAAADAAAAAAAKABAAAAADAAAAAAAbAAwAAAADAAAAAAA=")
+tile_map_data = PackedByteArray("AAACAAcAAAADAAAAAAAGAAkAAAADAAAAAAAIAAcAAAADAAAAAAALAAkAAAADAAAAAAAUAAkAAAADAAAAAAAYAA8AAAADAAAAAAAQAA4AAAADAAAAAAARAAcAAAADAAAAAAAXAAcAAAADAAAAAAAOAAYAAAADAAAAAAAMAA0AAAADAAAAAAAFAAwAAAADAAAAAAACAAoAAAADAAAAAAACAA8AAAADAAAAAAAKABAAAAADAAAAAAAMAA4AAAADAAAAAAAUAA0AAAADAAAAAAAVABAAAAADAAAAAAAaAAsAAAADAAAAAAAcAA4AAAADAAAAAAAdAAoAAAADAAAAAAAaAAgAAAADAAAAAAAcAAYAAAADAAAAAAAZAAYAAAADAAAAAAATAAYAAAADAAAAAAAPAAwAAAADAAAAAAAHAA8AAAADAAAAAAAWAAwAAAADAAAAAAAFAAcAAAADAAAAAAAQABAAAAADAAAAAAA=")
 tile_set = SubResource("TileSet_s4ihb")
 
 [node name="Cracks" type="TileMapLayer" parent="." unique_id=253661975]
@@ -319,6 +336,8 @@ collision_mask = 6
 [node name="Camera2D" type="Camera2D" parent="Miner" unique_id=1727430565]
 unique_name_in_owner = true
 zoom = Vector2(1.5, 1.5)
+limit_smoothed = true
+position_smoothing_enabled = true
 
 [node name="TimeLimit" type="Timer" parent="." unique_id=1425357357]
 unique_name_in_owner = true

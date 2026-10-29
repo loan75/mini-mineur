@@ -14,7 +14,7 @@ var damage: Dictionary[Vector2i, float] = {}
 @export var energy: int
 @onready var body_shape: RectangleShape2D = $CollisionShape2D.shape
 @onready var sprite: AnimatedSprite2D = %AnimatedSprite2D
-@export var pikeaxe_power: float = 1.0
+@export var pickaxe_power: float = 1.0
 
 
 signal new_score(score: int)
@@ -106,13 +106,13 @@ func hit(cell: Vector2i) -> bool:
 	var block := get_block(cell)
 	if block == null:
 		return false
-	damage[cell] = damage.get(cell, 0.0) + pikeaxe_power
+	damage[cell] = damage.get(cell, 0.0) + pickaxe_power
 	if %PickaxeEffect.stream != block.hit_sound: %PickaxeEffect.stream = block.hit_sound
 	%PickaxeEffect.play()
 	if damage[cell] >= block.hardness:
 		score += block.value
 		new_score.emit(score)
-		_spawn_dig_particles(cell, block.particle_color)
+		_spawn_dig_particles(cell, block.particle_gradient)
 		damage.erase(cell)
 		%Cracks.erase_cell(cell)
 		%Mine.set_cells_terrain_connect([cell], 0, -1)

@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://cusqa4fdtfgo2" path="res://Scenes/Block/block_data.gd" id="1_8p14f"]
 [ext_resource type="AudioStream" uid="uid://bcp62yoehuffr" path="res://Assets/Sound Effect/gold.mp3" id="1_wa6sg"]
 
-[sub_resource type="Gradient" id="Gradient_dfvtq"]
+[sub_resource type="Gradient" id="Gradient_677tj"]
 interpolation_color_space = 1
-colors = PackedColorArray(0.76324004, 0.618521, 0, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.7057297, 0.53771687, 1.92523e-07, 1, 0, 0, 0, 1)
 
 [resource]
 script = ExtResource("1_8p14f")
@@ -13,5 +13,5 @@ name = &"gold"
 hardness = 3.0
 value = 10
 hit_sound = ExtResource("1_wa6sg")
-particle_color = SubResource("Gradient_dfvtq")
+particle_gradient = SubResource("Gradient_677tj")
 metadata/_custom_type_script = "uid://cusqa4fdtfgo2"
