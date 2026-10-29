@@ -1,7 +1,7 @@
 # Mini-mineur
 
-A small 2D mining game made with Godot 4 in a few days, as a first complete project.
-Dig through the mine, find as much gold as you can before your energy or the timer runs out.
+A small 2D mining game made with Godot 4, started as a first complete project and now used as a playground for the digging prototype of a bigger game.
+Dig through the mine and collect as many points as you can before your energy or the timer runs out.
 
 **Play it in your browser:** https://denkitsune.itch.io/mining
 
@@ -16,14 +16,25 @@ Dig through the mine, find as much gold as you can before your energy or the tim
 
 ## Rules
 
-- Each block you dig costs energy. You start with 100 energy, and each block costs 5.
-- Digging a gold ore gives you 1 point.
+- Every pickaxe hit costs 2 energy. You start with 200 energy.
+- Blocks need several hits to break, depending on their hardness:
+
+| Block | Hits to break | Points |
+| --- | --- | --- |
+| Dirt | 1 | 1 |
+| Gold ore | 3 | 10 |
+
+- Cracks show how damaged a block is. Damage is kept if you leave a block and come back.
 - The game ends when your energy reaches 0 or when the 60-second timer runs out.
 - Try to beat your best score.
 
 ## Features
 
-- Hold-to-dig mining on a tile grid, with auto-tiling of the remaining terrain
+- Hit-based mining on a tile grid, with auto-tiling of the remaining terrain
+- Data-driven blocks: hardness, points, hit sound and particle colours defined in resources, not in code
+- Per-tile damage with 4 crack stages
+- Mining animation synced to the dig speed
+- Camera that follows the miner, with limits computed from the map
 - Energy, score and timer HUD
 - Title screen and game over screen with instant retry
 - Keyboard and touchscreen controls, detected automatically
@@ -33,28 +44,43 @@ Dig through the mine, find as much gold as you can before your energy or the tim
 ## Run the project locally
 
 1. Install [Godot 4.7](https://godotengine.org/download) or later (standard version, GDScript).
-2. Clone the repository:
+2. Install [Git LFS](https://git-lfs.com): images and sounds are stored with it.
+3. Clone the repository:
    ```bash
+   git lfs install
    git clone https://github.com/loan75/mini-mineur.git
    ```
-3. Open Godot, click **Import**, select the `project.godot` file, then press **F5** to play.
+   If Godot reports "failed loading resource" on the assets, the LFS files were not downloaded: run `git lfs pull` in the project folder.
+4. Open Godot, click **Import**, select the `project.godot` file, then press **F5** to play.
 
-To build the web version: **Project > Export > Web**.
+To build the web version: **Project > Export > Web**. The export goes to `exports/`, which is ignored by Git.
+
+## Adding a new block type
+
+1. In the FileSystem dock, right-click `Scenes/Block/` > **New Resource** > **BlockData**.
+2. Set its name, hardness (hits needed with a power-1 pickaxe), points, hit sound and particle gradient.
+3. In the TileSet of the `Mine` or `Ore` layer, select the tile and assign the resource to the `block` custom data.
 
 ## Project structure
 
 ```
-Assets/          Sprites, tilesets, music and sound effects
+Assets/          Sprites, tilesets, crack overlay, music and sound effects
 Scenes/
-  MainMenu/      Title screen with the controls
-  Mine/          Level: terrain, ore layer, timer and game rules
-  Player/        The miner: movement, digging, animations
+  Block/         BlockData resource script and one .tres per block type
+  Effects/       Dig particles
   HUD/           Energy, score, timer, game over and touch controls
+  MainMenu/      Title screen with the controls
+  Mine/          Level: terrain, ore and crack layers, camera limits, timer and game rules
+  Player/        The miner: movement, digging, damage, animations and sounds
 ```
+
+## Changelog
+
+- **0.5.1**: camera smoothing, tile data fixes, renames
+- **0.5**: block types with hardness and points, per-tile damage with cracks, camera following the miner, animation synced to dig speed, one hit sound per block type
+- **0.1 to 0.4**: first release and fixes
 
 ## Credits
 
 - Game design and code: Loan Harrouin (Denkitsune)
-- Character and tile sprites: TODO, add the asset pack name, author and licence
-- Music and sound effects: TODO, add the sources and licences
 - Made with the [Godot Engine](https://godotengine.org)
