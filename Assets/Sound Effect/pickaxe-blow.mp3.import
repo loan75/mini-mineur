@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/pickaxe-blow.mp3-68dd0d88b30b42cca817061e0bae
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

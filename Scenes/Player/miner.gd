@@ -4,15 +4,18 @@ const PROBE := 2.0   # pixels au-delà du bord du corps
 const DIG_PARTICLES := preload("uid://dqcdtnt3m2aaa")
 const SPEED = 100.0
 const JUMP_VELOCITY = -200.0
-const gold: Vector2i = Vector2i(3, 0)
-var dig_time: float = 1.0
 var dig_progress: float = 0.0
 var dig_target: Vector2i = Vector2i(-1, -1)
 var facing: Vector2i = Vector2i(1, 0)
 var score: int = 0
+var damage: Dictionary[Vector2i, float] = {}
+@export var dig_time: float = 1.0
 @export var energy_cost: int = 5
 @export var energy: int
 @onready var body_shape: RectangleShape2D = $CollisionShape2D.shape
+@onready var sprite: AnimatedSprite2D = %AnimatedSprite2D
+@export var pikeaxe_power: float = 1.0
+
 
 signal new_score(score: int)
 signal energy_changed(energy: int)
@@ -51,12 +54,18 @@ func _walk_animation() -> void:
 	else:
 		%AnimatedSprite2D.play("default")
 
+func _anim_length(anim: StringName) -> float:
+	var frames := sprite.sprite_frames
+	var total := 0.0
+	for i in frames.get_frame_count(anim):
+		total += frames.get_frame_duration(anim, i)
+	return total / frames.get_animation_speed(anim)
+
 func _mining_animation() -> void:
-	if facing.y == 1:
-		%AnimatedSprite2D.play("mine_down")
-	else:
-		%AnimatedSprite2D.flip_h = facing.x < 0
-		%AnimatedSprite2D.play("mine_right")
+	var anim := &"mine_down" if facing.y == 1 else &"mine_right"
+	if facing.y != 1:
+		sprite.flip_h = facing.x < 0
+	sprite.play(anim, _anim_length(anim) / dig_time)
 
 func _update_facing() -> void:
 	if Input.is_action_pressed("ui_down"):
@@ -80,34 +89,60 @@ func _can_dig(cell: Vector2i) -> bool:
 		return is_on_wall() and signf(get_wall_normal().x) == -facing.x
 	return is_on_floor()   # vers le bas : il faut être posé au sol
 
-func _spawn_dig_particles(cell: Vector2i) -> void:
+func _spawn_dig_particles(cell: Vector2i, color_ramp: Gradient) -> void:
 	var fx := DIG_PARTICLES.instantiate()
 	fx.global_position = %Mine.to_global(%Mine.map_to_local(cell))   # centre de la case
+	fx.color_ramp = color_ramp
 	get_parent().add_child(fx)   # ajouté au niveau, pas au joueur
 
+func get_block(cell: Vector2i) -> BlockData:
+	var data = %Ore.get_cell_tile_data(cell)
+	if data == null:
+		data = %Mine.get_cell_tile_data(cell)
+	return data.get_custom_data("block") if data else null
+
+## Returns true if the block broke.
+func hit(cell: Vector2i) -> bool:
+	var block := get_block(cell)
+	if block == null:
+		return false
+	damage[cell] = damage.get(cell, 0.0) + pikeaxe_power
+	if %PickaxeEffect.stream != block.hit_sound: %PickaxeEffect.stream = block.hit_sound
+	%PickaxeEffect.play()
+	if damage[cell] >= block.hardness:
+		score += block.value
+		new_score.emit(score)
+		_spawn_dig_particles(cell, block.particle_color)
+		damage.erase(cell)
+		%Cracks.erase_cell(cell)
+		%Mine.set_cells_terrain_connect([cell], 0, -1)
+		%Ore.erase_cell(cell)
+		return true
+	_update_cracks(cell, damage[cell] / block.hardness)
+	return false
+
+const CRACK_STAGES := 4
+
+func _update_cracks(cell: Vector2i, ratio: float) -> void:
+	var stage := mini(int(ratio * CRACK_STAGES), CRACK_STAGES - 1)
+	%Cracks.set_cell(cell, 0, Vector2i(stage, 0))
+
 func _dig(target: Vector2i, delta: float) -> void:
-	_mining_animation()
-	if not %PickaxeEffect.playing:
-		%PickaxeEffect.play()
 	if target != dig_target:
 		dig_target = target
 		dig_progress = 0.0
+		sprite.set_frame_and_progress(0, 0.0)
+	_mining_animation()
 	dig_progress += delta
 	if dig_progress >= dig_time:
-		if %Ore.get_cell_atlas_coords(target) == gold:
-			score += 1
-			new_score.emit(score)
-			_spawn_dig_particles(target)
+		hit(target)
 		energy -= energy_cost
 		energy_changed.emit(energy)
-		%Mine.set_cells_terrain_connect([target], 0, -1)   # remove the block
-		%Ore.erase_cell(target)
 		_reset_dig()
 
 func _reset_dig() -> void:
 	dig_progress = 0.0
 	dig_target = Vector2i(-1,-1)
-	%PickaxeEffect.stop()
 	
 
 func _is_mining_pressed() -> bool:

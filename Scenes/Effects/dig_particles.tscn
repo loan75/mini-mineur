@@ -12,7 +12,7 @@ colors = PackedColorArray(0.9138083, 0.793785, 0.36981064, 1, 0, 0, 0, 1)
 [node name="DigParticles" type="CPUParticles2D" unique_id=254394055]
 unique_name_in_owner = true
 emitting = false
-amount = 50
+amount = 30
 one_shot = true
 explosiveness = 0.66
 spread = 180.0

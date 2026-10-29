@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bcp62yoehuffr"
+path="res://.godot/imported/gold.mp3-6b189a99d7be4dd0a55adb029a2d216a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound Effect/gold.mp3"
+dest_files=["res://.godot/imported/gold.mp3-6b189a99d7be4dd0a55adb029a2d216a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

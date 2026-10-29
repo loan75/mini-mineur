@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BlockData" format=3 uid="uid://citod7cvl5wp3"]
+
+[ext_resource type="Script" uid="uid://cusqa4fdtfgo2" path="res://Scenes/Block/block_data.gd" id="1_2wmr1"]
+[ext_resource type="AudioStream" uid="uid://pkhhhw8fkuka" path="res://Assets/Sound Effect/pickaxe-blow.mp3" id="1_677tj"]
+
+[sub_resource type="Gradient" id="Gradient_pjtyv"]
+interpolation_color_space = 1
+colors = PackedColorArray(0.4015423, 0.19698408, 0, 1, 0, 0, 0, 1)
+
+[resource]
+script = ExtResource("1_2wmr1")
+name = &"dirt"
+value = 1
+hit_sound = ExtResource("1_677tj")
+particle_color = SubResource("Gradient_pjtyv")
+metadata/_custom_type_script = "uid://cusqa4fdtfgo2"

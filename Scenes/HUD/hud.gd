@@ -5,6 +5,7 @@ extends CanvasLayer
 func _ready() -> void:
 	%Miner.new_score.connect(_update_score)
 	%Miner.energy_changed.connect(_update_energy)
+	%EnergyBar.max_value = %Miner.energy
 	%EnergyBar.value = %Miner.energy
 	%GameOver.visible = false
 	if DisplayServer.is_touchscreen_available():
