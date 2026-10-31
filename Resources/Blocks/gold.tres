@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BlockData" format=3 uid="uid://va2i0pc0eges"]
 
-[ext_resource type="Script" uid="uid://cusqa4fdtfgo2" path="res://Scenes/Block/block_data.gd" id="1_8p14f"]
+[ext_resource type="Script" uid="uid://cusqa4fdtfgo2" path="res://Resources/Blocks/block_data.gd" id="1_8p14f"]
 [ext_resource type="AudioStream" uid="uid://bcp62yoehuffr" path="res://Assets/Sound Effect/gold.mp3" id="1_wa6sg"]
 
 [sub_resource type="Gradient" id="Gradient_677tj"]
