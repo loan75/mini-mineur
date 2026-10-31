@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://dexbjcl27ayqo"]
 
 [ext_resource type="Script" uid="uid://c4te3ppbm1ev" path="res://Scenes/MainMenu/main_menu.gd" id="1_0qgbs"]
-[ext_resource type="Texture2D" uid="uid://bjk1hj4lvr8qv" path="res://Assets/Game Art/background.jpg" id="1_qgdf6"]
-[ext_resource type="Texture2D" uid="uid://dsm4wnxkgeddn" path="res://Assets/Game Art/key.png" id="2_0qgbs"]
-[ext_resource type="Texture2D" uid="uid://bgqa226sxocmo" path="res://Assets/Game Art/space.png" id="3_adu2g"]
-[ext_resource type="Texture2D" uid="uid://b0eax20muj655" path="res://Assets/Game Art/down.png" id="6_agesy"]
-[ext_resource type="Texture2D" uid="uid://0e5hdoj2u213" path="res://Assets/Game Art/leftpng.png" id="7_mdp32"]
-[ext_resource type="Texture2D" uid="uid://vc64jihq5hxs" path="res://Assets/Game Art/right.png" id="8_rlg4b"]
-[ext_resource type="Texture2D" uid="uid://dvdfqoe4t7hds" path="res://Assets/Game Art/jump.png" id="9_w5buf"]
+[ext_resource type="Texture2D" uid="uid://bjk1hj4lvr8qv" path="res://Assets/Game Art/Background/background.jpg" id="1_qgdf6"]
+[ext_resource type="Texture2D" uid="uid://dsm4wnxkgeddn" path="res://Assets/Game Art/Button/key.png" id="2_0qgbs"]
+[ext_resource type="Texture2D" uid="uid://bgqa226sxocmo" path="res://Assets/Game Art/Button/space.png" id="3_adu2g"]
+[ext_resource type="Texture2D" uid="uid://b0eax20muj655" path="res://Assets/Game Art/Button/down.png" id="6_agesy"]
+[ext_resource type="Texture2D" uid="uid://vc64jihq5hxs" path="res://Assets/Game Art/Button/right.png" id="8_rlg4b"]
+[ext_resource type="Texture2D" uid="uid://dvdfqoe4t7hds" path="res://Assets/Game Art/Button/jump.png" id="9_w5buf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n5jej"]
 
 [node name="MainMenu" type="CanvasLayer" unique_id=609820265]
 script = ExtResource("1_0qgbs")
@@ -147,7 +148,7 @@ action = "ui_down"
 [node name="Left" type="TouchScreenButton" parent="Touchscreen" unique_id=1931617663]
 position = Vector2(-229, -92)
 scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("7_mdp32")
+texture_normal = SubResource("CompressedTexture2D_n5jej")
 action = "ui_left"
 
 [node name="Tight" type="TouchScreenButton" parent="Touchscreen" unique_id=737551217]

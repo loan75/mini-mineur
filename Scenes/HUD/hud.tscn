@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b6buyfofowtd4" path="res://Scenes/HUD/hud.gd" id="1_33i1w"]
 [ext_resource type="AudioStream" uid="uid://bro1g0m7ofn5i" path="res://Assets/Sound Effect/gameover.mp3" id="2_5aai8"]
-[ext_resource type="Texture2D" uid="uid://b0eax20muj655" path="res://Assets/Game Art/down.png" id="4_ewgg5"]
-[ext_resource type="Texture2D" uid="uid://0e5hdoj2u213" path="res://Assets/Game Art/leftpng.png" id="5_isc6x"]
-[ext_resource type="Texture2D" uid="uid://vc64jihq5hxs" path="res://Assets/Game Art/right.png" id="6_7hg1w"]
-[ext_resource type="Texture2D" uid="uid://dvdfqoe4t7hds" path="res://Assets/Game Art/jump.png" id="7_f3qeh"]
+[ext_resource type="Texture2D" uid="uid://b0eax20muj655" path="res://Assets/Game Art/Button/down.png" id="4_ewgg5"]
+[ext_resource type="Texture2D" uid="uid://vc64jihq5hxs" path="res://Assets/Game Art/Button/right.png" id="6_7hg1w"]
+[ext_resource type="Texture2D" uid="uid://dvdfqoe4t7hds" path="res://Assets/Game Art/Button/jump.png" id="7_f3qeh"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n5jej"]
+load_path = "res://.godot/imported/leftpng.png-81d59f2e8ab4a740b098f7417b2de2ed.ctex"
 
 [node name="HUD" type="CanvasLayer" unique_id=1154294347]
 script = ExtResource("1_33i1w")
@@ -139,7 +141,7 @@ action = "ui_down"
 [node name="Left" type="TouchScreenButton" parent="Touchscreen" unique_id=1861810473]
 position = Vector2(-229, -92)
 scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("5_isc6x")
+texture_normal = SubResource("CompressedTexture2D_n5jej")
 action = "ui_left"
 
 [node name="Right" type="TouchScreenButton" parent="Touchscreen" unique_id=1350685699]

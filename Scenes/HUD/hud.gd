@@ -32,6 +32,6 @@ func game_over() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not get_tree().paused:
 		return
-	if event.is_action_pressed("ui_accept") or (event is InputEventScreenTouch and event.pressed):
+	if event.is_action_pressed("confirm") or (event is InputEventScreenTouch and event.pressed):
 		get_tree().paused = false
 		get_tree().reload_current_scene()

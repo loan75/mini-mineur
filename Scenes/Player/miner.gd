@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("confirm") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	_update_facing()
@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 		_dig(target, delta)
 	else:
 		_reset_dig()
-		var direction := Input.get_axis("ui_left", "ui_right")
+		var direction := Input.get_axis("move_left", "move_right")
 		velocity.x = direction * SPEED if direction else move_toward(velocity.x, 0, SPEED)
 		_walk_animation()
 	
@@ -56,7 +56,7 @@ func _walk_animation() -> void:
 
 func _anim_length(anim: StringName) -> float:
 	var frames := sprite.sprite_frames
-	var total := 0.0
+	var total := 0.0 
 	for i in frames.get_frame_count(anim):
 		total += frames.get_frame_duration(anim, i)
 	return total / frames.get_animation_speed(anim)
@@ -68,11 +68,11 @@ func _mining_animation() -> void:
 	sprite.play(anim, _anim_length(anim) / dig_time)
 
 func _update_facing() -> void:
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("move_down"):
 		facing = Vector2i(0, 1)
-	elif Input.is_action_pressed("ui_left"):
+	elif Input.is_action_pressed("move_left"):
 		facing = Vector2i(-1, 0)
-	elif Input.is_action_pressed("ui_right"):
+	elif Input.is_action_pressed("move_right"):
 		facing = Vector2i(1, 0)
 
 func _get_dig_target() -> Vector2i:
@@ -146,9 +146,9 @@ func _reset_dig() -> void:
 	
 
 func _is_mining_pressed() -> bool:
-	return Input.is_action_pressed("ui_left") \
-		or Input.is_action_pressed("ui_right") \
-		or Input.is_action_pressed("ui_down")
+	return Input.is_action_pressed("move_left") \
+		or Input.is_action_pressed("move_right") \
+		or Input.is_action_pressed("move_down")
 
 func dead() -> void:
 	%AnimatedSprite2D.play("dead")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgqa226sxocmo"
-path="res://.godot/imported/space.png-f154635ddd4c79ba4a376d528f16241d.ctex"
+uid="uid://m4fh1be6egu8"
+path="res://.godot/imported/Miner16Bit_WorldTiles_01.png-fd45cacef1398e33766b2b6d05c08b46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Game Art/space.png"
-dest_files=["res://.godot/imported/space.png-f154635ddd4c79ba4a376d528f16241d.ctex"]
+source_file="res://Assets/Game Art/Spreadsheet/Miner16Bit_WorldTiles_01.png"
+dest_files=["res://.godot/imported/Miner16Bit_WorldTiles_01.png-fd45cacef1398e33766b2b6d05c08b46.ctex"]
 
 [params]
 
