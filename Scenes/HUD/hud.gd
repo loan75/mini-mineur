@@ -1,37 +1,42 @@
+class_name HUD
 extends CanvasLayer
+## Display only: the level pushes values in, the HUD shows them.
+
+signal retry_requested
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	%Miner.new_score.connect(_update_score)
-	%Miner.energy_changed.connect(_update_energy)
-	%EnergyBar.max_value = %Miner.energy
-	%EnergyBar.value = %Miner.energy
 	%GameOver.visible = false
-	if DisplayServer.is_touchscreen_available():
-		$Touchscreen.visible = true
-	else:
-		$Touchscreen.visible = false
+	$Touchscreen.visible = DisplayServer.is_touchscreen_available()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	%TimerValue.text = str(int(%TimeLimit.time_left))
 
-func _update_score(score: int) -> void:
+func setup(max_energy: int) -> void:
+	%EnergyBar.max_value = max_energy
+	%EnergyBar.value = max_energy
+	set_score(0)
+
+
+func set_score(score: int) -> void:
 	%ScoreValue.text = str(score)
 
-func _update_energy(energy: int) -> void:
+
+func set_energy(energy: int) -> void:
 	%EnergyBar.value = energy
 
-func game_over() -> void:
+
+func set_time(seconds_left: float) -> void:
+	%TimerValue.text = str(int(seconds_left))
+
+
+func show_game_over(score: int) -> void:
 	%PlayerInfo.visible = false
-	%FinalScore.text = %ScoreValue.text
+	%FinalScore.text = str(score)
 	%GameOver.visible = true
 	%GameOverSound.play()
 
+
 func _unhandled_input(event: InputEvent) -> void:
-	if not get_tree().paused:
+	if not %GameOver.visible:
 		return
 	if event.is_action_pressed("confirm") or (event is InputEventScreenTouch and event.pressed):
-		get_tree().paused = false
-		get_tree().reload_current_scene()
+		retry_requested.emit()

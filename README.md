@@ -57,7 +57,7 @@ To build the web version: **Project > Export > Web**. The export goes to `export
 
 ## Adding a new block type
 
-1. In the FileSystem dock, right-click `Scenes/Block/` > **New Resource** > **BlockData**.
+1. In the FileSystem dock, right-click `Resources/Blocks/` > **New Resource** > **BlockData**.
 2. Set its name, hardness (hits needed with a power-1 pickaxe), points, hit sound and particle gradient.
 3. In the TileSet of the `Mine` or `Ore` layer, select the tile and assign the resource to the `block` custom data.
 
@@ -65,14 +65,18 @@ To build the web version: **Project > Export > Web**. The export goes to `export
 
 ```
 Assets/          Sprites, tilesets, crack overlay, music and sound effects
+Resources/
+  Blocks/        BlockData resource script and one .tres per block type
 Scenes/
-  Block/         BlockData resource script and one .tres per block type
   Effects/       Dig particles
-  HUD/           Energy, score, timer, game over and touch controls
+  HUD/           Display only: energy, score, timer, game over and touch controls
   MainMenu/      Title screen with the controls
-  Mine/          Level: terrain, ore and crack layers, camera limits, timer and game rules
-  Player/        The miner: movement, digging, damage, animations and sounds
+  Mine/          Level: game rules (score, timer, end of game) and wiring between the scenes
+  Player/        The miner: input, movement and dig state machines, animations and sounds
+  Terrain/       Diggable layers: block lookup, damage, cracks, particles, removing tiles
 ```
+
+The scenes follow "call down, signal up": the level calls methods on its children and listens to their signals, and the terrain, the miner and the HUD never reach each other directly.
 
 ## Changelog
 
