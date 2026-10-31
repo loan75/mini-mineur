@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://vc64jihq5hxs" path="res://Assets/Game Art/Button/right.png" id="6_7hg1w"]
 [ext_resource type="Texture2D" uid="uid://dvdfqoe4t7hds" path="res://Assets/Game Art/Button/jump.png" id="7_f3qeh"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n5jej"]
-load_path = "res://.godot/imported/leftpng.png-81d59f2e8ab4a740b098f7417b2de2ed.ctex"
-
 [node name="HUD" type="CanvasLayer" unique_id=1154294347]
 script = ExtResource("1_33i1w")
 metadata/_edit_use_anchors_ = true
@@ -136,22 +133,22 @@ position = Vector2(-173, -58)
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("4_ewgg5")
 passby_press = true
-action = "ui_down"
+action = "move_down"
 
 [node name="Left" type="TouchScreenButton" parent="Touchscreen" unique_id=1861810473]
-position = Vector2(-229, -92)
-scale = Vector2(0.5, 0.5)
-texture_normal = SubResource("CompressedTexture2D_n5jej")
-action = "ui_left"
+position = Vector2(-179, -92)
+scale = Vector2(-0.5, 0.5)
+texture_normal = ExtResource("6_7hg1w")
+action = "move_left"
 
 [node name="Right" type="TouchScreenButton" parent="Touchscreen" unique_id=1350685699]
 position = Vector2(-116, -90)
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("6_7hg1w")
-action = "ui_right"
+action = "move_right"
 
 [node name="Jump" type="TouchScreenButton" parent="Touchscreen" unique_id=1078112273]
 position = Vector2(137.99998, -85)
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("7_f3qeh")
-action = "ui_accept"
+action = "jump"
